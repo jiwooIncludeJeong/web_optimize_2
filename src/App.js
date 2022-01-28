@@ -1,4 +1,4 @@
-import React, {lazy, useState, Suspense, useEffect} from 'react'
+import React, {Suspense, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Header from './components/Header'
 import InfoTable from './components/InfoTable'
@@ -25,6 +25,10 @@ function App() {
     // 2. 모든 다른 컴포넌트의 loading이 끝났을 때 preload
     useEffect(()=>{
         LazyImageModal.preload();
+
+        // image preload -> 모듈과 다르게 그때그때 필요에 의해 네트워크 요청 보냄 -> 중복된 이미지여도 중복 호출하게 된다 -> 캐싱 필요
+        const img  = new Image();
+        img.src = 'https://stillmed.olympic.org/media/Photos/2016/08/20/part-1/20-08-2016-Football-Men-01.jpg?interpolation=lanczos-none&resize=*:800'
     },[])
 
     return (
