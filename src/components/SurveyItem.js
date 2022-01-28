@@ -6,16 +6,16 @@ const SurveyItem = (props) => {
     let total = Object.values(props.data).reduce((a, b) => a + b, 0)
     return (
         <div className="SurveyItem">
-            <Question>Q{props.survey.no + 1}. {props.survey.question}</Question>
+            <Question>Q{props.survey.no}. {props.survey.question}</Question>
             <div>
                 {props.survey.items.map((item, index) => {
                     let percent = props.data.hasOwnProperty(index) ? (props.data[index] / total * 100).toFixed(1) : 0
                     return (
-                        <Bar 
-                            key={`bar-item-${index}`} 
-                            percent={percent} 
-                            itemValue={item} 
-                            count={props.data[index]} 
+                        <Bar
+                            key={`bar-item-${index}`}
+                            percent={percent}
+                            itemValue={item}
+                            count={props.data[index]}
                             handleClickBar={() => {props.toggleFilter(props.survey.no - 1, index)}}
                             isSelected={props.selectedItem === index}
                         />

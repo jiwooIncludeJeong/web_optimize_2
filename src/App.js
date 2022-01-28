@@ -14,8 +14,10 @@ function App() {
             <Header />
             <InfoTable />
             <ButtonModal onClick={() => { setShowModal(true) }}>올림픽 사진 보기</ButtonModal>
+            {/*important*/}
             <SurveyChart />
             <Footer />
+            {/*important*/}
             {showModal ? <ImageModal closeModal={() => { setShowModal(false) }} /> : null}
         </div>
     )
